@@ -1,7 +1,10 @@
-<h3>All Restaurants</h3>
+<div id="navbar-home" class="navbar">
+  <h3>All Restaurants</h3>
+  <p><%= link_to 'Add Restaurant', new_restaurant_path(@restaurant) %></p>
+</div>
 
-<% @restaurants.each do |restaurant| %>
-  <p><%= link_to restaurant.name, restaurant_path(restaurant) %></p>
-<% end %>
-
-<p><%= link_to 'Create a new Restaurant', new_restaurant_path(@restaurant) %></p>
+<div class="content-text">
+  <% @restaurants.each do |restaurant| %>
+    <p><%= link_to restaurant.name, restaurant_path(restaurant) %></p>
+  <% end %>
+</div>

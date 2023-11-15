@@ -1,19 +1,30 @@
-<p><%= link_to 'Home', root_path %></p>
-
-<h3><%= @restaurant.name %></h3>
-
-<h6>address: <%= @restaurant.address %></h6>
-<h6>category: <%= @restaurant.category %></h6>
-<h6>contact: <%= @restaurant.phone_number %></h6>
-
-<div>
-  <%= link_to 'Edit Restaurant', edit_restaurant_path(@restaurant) %> |
-  <%= link_to 'Delete Restaurant', @restaurant, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+<div id="navbar-show" class="navbar">
+  <h3><%= @restaurant.name %></h3>
+  <p><%= link_to 'Home', root_path %></p>
 </div>
 
-<p><%= link_to 'Leave a Review', new_restaurant_review_path(@restaurant) %></p>
+<div class="content-text">
+  <div class="restaurant-details container">
+    <h5>See restaurant's details</h5>
+    <p>address: <%= @restaurant.address %></p>
+    <p>category: <%= @restaurant.category %></p>
+    <p>contact: <%= @restaurant.phone_number %></p>
+    <div class="restaurant-details-actions">
+      <%= link_to 'Edit Restaurant', edit_restaurant_path(@restaurant) %> |
+      <%= link_to 'Delete Restaurant', @restaurant, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %> |
+      <%= link_to 'Leave a Review', new_restaurant_review_path(@restaurant) %>
+    </div>
+  </div>
 
-<h5>See existing reviews</h5>
-<% @restaurant.reviews.each do |review| %>
-  <li><%= review.rating %>/5 - <%= review.content %></li>
-<% end %>
+  <div class="container restaurant-reviews">
+    <h5>See existing reviews</h5>
+
+    <% if @restaurant.reviews.empty? %>
+      <p>No reviews yet</p>
+    <% else %>
+      <% @restaurant.reviews.each do |review| %>
+        <li><%= review.rating %>/5 - <%= review.content %></li>
+      <% end %>
+    <% end %>
+  </div>
+</div>
