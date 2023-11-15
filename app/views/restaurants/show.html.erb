@@ -1,0 +1,12 @@
+<h3><%= @restaurant.name %></h3>
+
+<h6>address: <%= @restaurant.address %></h6>
+<h6>category: <%= @restaurant.category %></h6>
+<h6>contact: <%= @restaurant.phone_number %></h6>
+
+<p><%= link_to 'Home', root_path %></p>
+
+<div>
+  <%= link_to 'Edit Restaurant', edit_restaurant_path(@restaurant) %> |
+  <%= link_to 'Delete Restaurant', @restaurant, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+</div>
